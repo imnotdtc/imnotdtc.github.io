@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>48Game</title>
+    <description>while(success!=try());</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 20 Aug 2015 08:08:51 +0800</pubDate>
+    <lastBuildDate>Thu, 20 Aug 2015 08:08:51 +0800</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>图形学算法</title>
+        <description>&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;判断点是否在矩形内&lt;/p&gt;
+
+    &lt;p&gt;bool IsPointInRect(const Rect&amp;amp; rc, const Point&amp;amp; p)
+ 	{
+ 	    double xr = (p.x - rc.p1.x) * (p.x - rc.p2.x);
+ 	    double yr = (p.y - rc.p1.y) * (p.y - rc.p2.y);&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+ 	    return ( (xr &amp;lt;= 0.0) &amp;amp;&amp;amp; (yr &amp;lt;= 0.0) );
+ 	}
+
+</description>
+        <pubDate>Sat, 08 Aug 2015 00:00:00 +0800</pubDate>
+        <link>/2015/08/08/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E7%AE%97%E6%B3%95/</link>
+        <guid isPermaLink="true">/2015/08/08/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E7%AE%97%E6%B3%95/</guid>
+        
+        
+        <category>code</category>
+        
+      </item>
+    
+      <item>
+        <title>MetaBall</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://blueve.me/archives/1070&quot;&gt;链接~&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 06 Feb 2015 00:00:00 +0800</pubDate>
+        <link>/2015/02/06/MetaBalls/</link>
+        <guid isPermaLink="true">/2015/02/06/MetaBalls/</guid>
+        
+        
+        <category>code</category>
+        
+      </item>
+    
+      <item>
+        <title>Gopm!</title>
+        <description>&lt;p&gt;http://gopm.io/&lt;/p&gt;
+</description>
+        <pubDate>Tue, 04 Nov 2014 00:00:00 +0800</pubDate>
+        <link>/2014/11/04/gopm/</link>
+        <guid isPermaLink="true">/2014/11/04/gopm/</guid>
+        
+        
+        <category>other</category>
+        
+      </item>
+    
+      <item>
+        <title>BehaviorTree</title>
+        <description>&lt;h1 id=&quot;httpblogcsdnnetakaraarticledetails6084786&quot;&gt;&lt;a href=&quot;http://blog.csdn.net/akara/article/details/6084786&quot;&gt;1&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;# &lt;a href=&quot;http://blog.csdn.net/fg5823820/article/details/8750606&quot;&gt;2&lt;/a&gt;
+# &lt;a href=&quot;http://www.cnblogs.com/cnas3/archive/2011/08/14/2138445.html&quot;&gt;3&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 29 Aug 2014 00:00:00 +0800</pubDate>
+        <link>/2014/08/29/BehaviorTree/</link>
+        <guid isPermaLink="true">/2014/08/29/BehaviorTree/</guid>
+        
+        
+        <category>code</category>
+        
+      </item>
+    
+      <item>
+        <title>fenye</title>
+        <description>&lt;p&gt;(http://kingauthur.info/tech.html)&lt;/p&gt;
+</description>
+        <pubDate>Wed, 27 Aug 2014 00:00:00 +0800</pubDate>
+        <link>/2014/08/27/fenye/</link>
+        <guid isPermaLink="true">/2014/08/27/fenye/</guid>
+        
+        
+        <category>other</category>
+        
+      </item>
+    
+      <item>
+        <title>Rule</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;创意 Innovation – 游戏中出人意料的，独特的，与众不同的东西。&lt;/li&gt;
+  &lt;li&gt;趣味 Fun – 你玩游戏时的体验如何？有多投入？抬头看表时才发现已经过了5个小时？&lt;/li&gt;
+  &lt;li&gt;主题 Theme – 游戏与主题的契合程度。是否根据主题做出了一些有创意的或出人意料的东西？&lt;/li&gt;
+  &lt;li&gt;画面 Graphics – 游戏看起来如何，或者说美术设计是否有效。精美的美术创作或视觉风格。&lt;/li&gt;
+  &lt;li&gt;声音 Audio – 游戏听起来如何，或者说音乐设计是否有效。朗朗上口的音乐，逼真的音效，生动的旁白等。&lt;/li&gt;
+  &lt;li&gt;幽默 Humor – 游戏高效的程度。幽默的对话，有趣的音效等。&lt;/li&gt;
+  &lt;li&gt;氛围 Mood – 故事，情绪，以及你在游戏过程中产生的共鸣。&lt;/li&gt;
+  &lt;li&gt;整体 Overall – 根据你所关注的方面对游戏做出整体评价。&lt;/li&gt;
+  &lt;li&gt;社区 Community – 进度日志，照片，timelapse视频——除了做游戏之外你所做的事。
+(来自Ludum Dare的评分标准)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 27 Aug 2014 00:00:00 +0800</pubDate>
+        <link>/2014/08/27/Rule/</link>
+        <guid isPermaLink="true">/2014/08/27/Rule/</guid>
+        
+        
+        <category>other</category>
+        
+      </item>
+    
+      <item>
+        <title>About Liquid</title>
+        <description>&lt;h1 id=&quot;httpsgithubcomshopifyliquidwikiliquid-for-designers&quot;&gt;&lt;a href=&quot;https://github.com/Shopify/liquid/wiki/Liquid-for-Designers&quot;&gt;语法&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;#&lt;a href=&quot;http://blog.csdn.net/dont27/article/details/38097581&quot;&gt;语法&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 27 Aug 2014 00:00:00 +0800</pubDate>
+        <link>/2014/08/27/Liquid/</link>
+        <guid isPermaLink="true">/2014/08/27/Liquid/</guid>
+        
+        
+        <category>other</category>
+        
+      </item>
+    
+      <item>
+        <title>寻路</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/huang9012/article/details/26391211&quot;&gt;AStar&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.luzexi.com/unity3d%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1navmesh%E5%AF%BB%E8%B7%AF/&quot;&gt;NavMesh&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5728.html&quot;&gt;1&lt;/a&gt;
+&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5729.html&quot;&gt;2&lt;/a&gt;
+&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5730.html&quot;&gt;3&lt;/a&gt;
+&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5731.html&quot;&gt;4&lt;/a&gt;
+&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5732.html&quot;&gt;5&lt;/a&gt;
+&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5733.html&quot;&gt;6&lt;/a&gt;
+&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5734.html&quot;&gt;7&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 25 Aug 2014 00:00:00 +0800</pubDate>
+        <link>/2014/08/25/AStarCsharp/</link>
+        <guid isPermaLink="true">/2014/08/25/AStarCsharp/</guid>
+        
+        
+        <category>code</category>
+        
+      </item>
+    
+      <item>
+        <title>万向锁</title>
+        <description>&lt;p&gt;万向节死锁有时又被简称为万向节锁或者万向锁，是指当三个万向节其中两个的轴发生重合时，会失去一个自由度的情形。&lt;/p&gt;
+&lt;embed src=&quot;http://player.youku.com/player.php/sid/XNzkyOTIyMTI=/v.swf&quot; quality=&quot;high&quot; width=&quot;480&quot; height=&quot;400&quot; align=&quot;center&quot; allowscriptaccess=&quot;sameDomain&quot; type=&quot;application/x-shockwave-flash&quot; /&gt;
+&lt;p&gt;&amp;lt;/embed&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E8%90%AC%E5%90%91%E9%8E%96&quot;&gt;Wiki&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 24 Aug 2014 00:00:00 +0800</pubDate>
+        <link>/2014/08/24/wanxiangsuo/</link>
+        <guid isPermaLink="true">/2014/08/24/wanxiangsuo/</guid>
+        
+        
+        <category>other</category>
+        
+      </item>
+    
+      <item>
+        <title>Git记住密码</title>
+        <description>&lt;!--more--&gt;
+&lt;p&gt;&lt;code&gt;
+[credential]    
+    helper = store
+&lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 23 Aug 2014 00:00:00 +0800</pubDate>
+        <link>/2014/08/23/gitjizhumima/</link>
+        <guid isPermaLink="true">/2014/08/23/gitjizhumima/</guid>
+        
+        
+        <category>other</category>
+        
+      </item>
+    
+  </channel>
+</rss>
