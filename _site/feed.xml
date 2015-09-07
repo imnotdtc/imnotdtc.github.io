@@ -5,9 +5,28 @@
     <description>while(success!=try());</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 08 Sep 2015 00:26:09 +0800</pubDate>
-    <lastBuildDate>Tue, 08 Sep 2015 00:26:09 +0800</lastBuildDate>
+    <pubDate>Tue, 08 Sep 2015 00:43:15 +0800</pubDate>
+    <lastBuildDate>Tue, 08 Sep 2015 00:43:15 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>发现一个蛮好玩的游戏以及一个不错的H5引擎</title>
+        <description>&lt;h2 id=&quot;phaser&quot;&gt;Phaser&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://phaser.io/&quot;&gt;这是官网&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;wtfgame&quot;&gt;WTFGAME&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://cafebabe.cc/resource/img/wtfgame.png&quot; alt=&quot;wtfgame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://cafebabe.cc/WTFGame/&quot;&gt;这就是那个很逗的游戏&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 03 Sep 2015 00:00:00 +0800</pubDate>
+        <link>/2015/09/03/%E5%8F%91%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%9B%AE%E5%A5%BD%E7%8E%A9%E7%9A%84%E6%B8%B8%E6%88%8F%E4%BB%A5%E5%8F%8A%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%94%99%E7%9A%84H5%E5%BC%95%E6%93%8E/</link>
+        <guid isPermaLink="true">/2015/09/03/%E5%8F%91%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%9B%AE%E5%A5%BD%E7%8E%A9%E7%9A%84%E6%B8%B8%E6%88%8F%E4%BB%A5%E5%8F%8A%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%94%99%E7%9A%84H5%E5%BC%95%E6%93%8E/</guid>
+        
+        
+        <category>html5</category>
+        
+      </item>
     
       <item>
         <title>图形学算法</title>
@@ -278,30 +297,6 @@ void ChangeHeight(View cv,int offset)
         <pubDate>Wed, 27 Aug 2014 00:00:00 +0800</pubDate>
         <link>/2014/08/27/fenye/</link>
         <guid isPermaLink="true">/2014/08/27/fenye/</guid>
-        
-        
-        <category>other</category>
-        
-      </item>
-    
-      <item>
-        <title>Rule</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;创意 Innovation – 游戏中出人意料的，独特的，与众不同的东西。&lt;/li&gt;
-  &lt;li&gt;趣味 Fun – 你玩游戏时的体验如何？有多投入？抬头看表时才发现已经过了5个小时？&lt;/li&gt;
-  &lt;li&gt;主题 Theme – 游戏与主题的契合程度。是否根据主题做出了一些有创意的或出人意料的东西？&lt;/li&gt;
-  &lt;li&gt;画面 Graphics – 游戏看起来如何，或者说美术设计是否有效。精美的美术创作或视觉风格。&lt;/li&gt;
-  &lt;li&gt;声音 Audio – 游戏听起来如何，或者说音乐设计是否有效。朗朗上口的音乐，逼真的音效，生动的旁白等。&lt;/li&gt;
-  &lt;li&gt;幽默 Humor – 游戏高效的程度。幽默的对话，有趣的音效等。&lt;/li&gt;
-  &lt;li&gt;氛围 Mood – 故事，情绪，以及你在游戏过程中产生的共鸣。&lt;/li&gt;
-  &lt;li&gt;整体 Overall – 根据你所关注的方面对游戏做出整体评价。&lt;/li&gt;
-  &lt;li&gt;社区 Community – 进度日志，照片，timelapse视频——除了做游戏之外你所做的事。
-(来自Ludum Dare的评分标准)&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 27 Aug 2014 00:00:00 +0800</pubDate>
-        <link>/2014/08/27/Rule/</link>
-        <guid isPermaLink="true">/2014/08/27/Rule/</guid>
         
         
         <category>other</category>
