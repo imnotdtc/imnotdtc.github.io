@@ -5,10 +5,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>图形学算法</title>
-	<meta name="description" content="      判断点是否在矩形内      bool IsPointInRect(const Rect&amp; rc, const Point&amp; p)   	{   	    double xr = (p.x - rc.p1.x) * (p.x - rc.p2.x);   	    double yr =...">
+	<title>Android禁止输入全屏</title>
+	<meta name="description" content="View.setImeOptions(EditorInfo.IME_FLAG_NO_FULLSCREEN|EditorInfo.IME_ACTION_DONE);">
 	
-	<link rel="canonical" href="/2015/08/08/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E7%AE%97%E6%B3%95/">
+	<link rel="canonical" href="/2015/07/02/%E5%AE%89%E5%8D%93%E7%A6%81%E6%AD%A2%E8%BE%93%E5%85%A5%E6%B3%95%E5%85%A8%E5%B1%8F/">
 	<link rel="alternate" type="application/rss+xml" title="48Game" href="/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/css/main.css"> -->
@@ -101,137 +101,13 @@
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
       <header>
-        <h1>图形学算法</h1>
-        <p>Aug 8, 2015</p>
+        <h1>Android禁止输入全屏</h1>
+        <p>Jul 2, 2015</p>
       </header>
       <hr>
       <article>
-        <ul>
-  <li>
-    <p>判断点是否在矩形内</p>
-
-    <pre><code>  bool IsPointInRect(const Rect&amp; rc, const Point&amp; p)
-   	{
-   	    double xr = (p.x - rc.p1.x) * (p.x - rc.p2.x);
-   	    double yr = (p.y - rc.p1.y) * (p.y - rc.p2.y);
-   	    return ( (xr &lt;= 0.0) &amp;&amp; (yr &lt;= 0.0) );
-   	}
+        <pre><code>View.setImeOptions(EditorInfo.IME_FLAG_NO_FULLSCREEN|EditorInfo.IME_ACTION_DONE);
 </code></pre>
-  </li>
-  <li>
-    <p>向量运算</p>
-
-    <ul>
-      <li>
-        <p>叉乘</p>
-
-        <p>P × Q = x1<em>y2 - x2</em>y1</p>
-      </li>
-      <li>
-        <p>点乘</p>
-
-        <p>P·Q = x1<em>x2 + y1</em>y2</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>快速排斥试验</p>
-
-    <p>设以线段 P1P2 为对角线的矩形为R1， 设以线段 Q1Q2 为对角线的矩形为R2，如果R1和R2不相交，则两线段不会有交点；</p>
-  </li>
-  <li>
-    <p>跨立试验</p>
-
-    <p>如果两线段相交，则两线段必然相互跨立对方，所谓跨立，指的是一条线段的两端点分别位于另一线段所在直线的两边。判断是否跨立，还是要用到矢量叉积的几何意义。以图3为例，若P1P2跨立Q1Q2 ，则矢量</p>
-
-    <p>( P1 - Q1 ) 和( P2 - Q1 )位于矢量( Q2 - Q1 )</p>
-
-    <p>的两侧，即：</p>
-
-    <p>( P1 - Q1 ) × ( Q2 - Q1 ) * ( P2 - Q1 ) × ( Q2 - Q1 ) &lt; 0</p>
-
-    <p>上式可改写成：</p>
-
-    <p>( P1 - Q1 ) × ( Q2 - Q1 ) * ( Q2 - Q1 ) × ( P2 - Q1 ) &gt; 0</p>
-
-    <p>当</p>
-
-    <p>( P1 - Q1 ) × ( Q2 - Q1 ) = 0</p>
-
-    <p>时，说明线段P1P2和Q1Q2共线（但是不一定有交点）。同理判断Q1Q2跨立P1P2的依据是：</p>
-
-    <p>( Q1 - P1 ) × ( P2 - P1 ) * ( Q2 - P1 ) × ( P2 - P1 ) &lt; 0</p>
-  </li>
-  <li>
-    <p>判断点是否在多边形内</p>
-
-    <pre><code>bool IsPointInPolygon(const Polygon&amp; py, const Point&amp; pt)
- {
-     assert(py.IsValid()); /*只考虑正常的多边形，边数&gt;=3*/
-	 
-     int count = 0;
-     LineSeg ll = LineSeg(pt, Point(-INFINITE, pt.y)); /*射线L*/
-     for(int i = 0; i &lt; py.GetPolyCount(); i++)
-     {
-         /*当前点和下一个点组成线段P1P2*/
-         LineSeg pp = LineSeg(py.pts[i], py.pts[(i + 1) % py.GetPolyCount()]);
-         if(IsPointOnLineSegment(pp, pt))
-         {
-             return true;
-         }
-	 
-         if(!pp.IsHorizontal())
-         {
-             if((IsSameFloatValue(pp.ps.y, pt.y)) &amp;&amp; (pp.ps.y &gt; pp.pe.y))
-             {
-                 count++;
-             }
-             else if((IsSameFloatValue(pp.pe.y, pt.y)) &amp;&amp; (pp.pe.y &gt; pp.ps.y))
-             {
-                 count++;
-             }
-             else
-             {
-                 if(IsLineSegmentIntersect(pp, ll))
-                 {
-                     count++;
-                 }
-             }
-         }
-     }
-	 
-     return ((count % 2) == 1);
- }
-</code></pre>
-  </li>
-  <li>
-    <p>求多边形外包矩形</p>
-
-    <pre><code> void GetPolygonEnvelopRect(const Polygon&amp; py, Rect&amp; rc)
- {
-     assert(py.IsValid()); /*只考虑正常的多边形，边数&gt;=3*/
-	 
-     double minx = py.pts[0].x;
-     double maxx = py.pts[0].x;
-     double miny = py.pts[0].y;
-     double maxy = py.pts[0].y;
-     for(int i = 1; i &lt; py.GetPolyCount(); i++)
-     {
-         if(py.pts[i].x &lt; minx)
-             minx = py.pts[i].x;
-         if(py.pts[i].x &gt; maxx)
-             maxx = py.pts[i].x;
-         if(py.pts[i].y &lt; miny)
-             miny = py.pts[i].y;
-         if(py.pts[i].y &gt; maxy)
-             maxy = py.pts[i].y;
-     }
-	 
-     rc = Rect(minx, miny, maxx, maxy);
- }
-</code></pre>
-  </li>
-</ul>
 
       </article>
       <hr>
@@ -243,7 +119,7 @@
     <div class="post-area post comment">
       <!-- 多说评论框 start -->
       
-      <div class="ds-thread" data-thread-key="/2015/08/08/图形学算法" data-title="图形学算法" data-url="/2015/08/08/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E7%AE%97%E6%B3%95/"></div>
+      <div class="ds-thread" data-thread-key="/2015/07/02/安卓禁止输入法全屏" data-title="Android禁止输入全屏" data-url="/2015/07/02/%E5%AE%89%E5%8D%93%E7%A6%81%E6%AD%A2%E8%BE%93%E5%85%A5%E6%B3%95%E5%85%A8%E5%B1%8F/"></div>
       
       <!-- 多说评论框 end -->
     </div>

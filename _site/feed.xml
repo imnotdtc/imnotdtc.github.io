@@ -5,33 +5,228 @@
     <description>while(success!=try());</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 20 Aug 2015 08:08:51 +0800</pubDate>
-    <lastBuildDate>Thu, 20 Aug 2015 08:08:51 +0800</lastBuildDate>
+    <pubDate>Tue, 08 Sep 2015 00:26:09 +0800</pubDate>
+    <lastBuildDate>Tue, 08 Sep 2015 00:26:09 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>图形学算法</title>
-        <description>&lt;ol&gt;
+        <description>&lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;判断点是否在矩形内&lt;/p&gt;
 
-    &lt;p&gt;bool IsPointInRect(const Rect&amp;amp; rc, const Point&amp;amp; p)
- 	{
- 	    double xr = (p.x - rc.p1.x) * (p.x - rc.p2.x);
- 	    double yr = (p.y - rc.p1.y) * (p.y - rc.p2.y);&lt;/p&gt;
+    &lt;pre&gt;&lt;code&gt;  bool IsPointInRect(const Rect&amp;amp; rc, const Point&amp;amp; p)
+   	{
+   	    double xr = (p.x - rc.p1.x) * (p.x - rc.p2.x);
+   	    double yr = (p.y - rc.p1.y) * (p.y - rc.p2.y);
+   	    return ( (xr &amp;lt;= 0.0) &amp;amp;&amp;amp; (yr &amp;lt;= 0.0) );
+   	}
+&lt;/code&gt;&lt;/pre&gt;
   &lt;/li&gt;
-&lt;/ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;向量运算&lt;/p&gt;
 
- 	    return ( (xr &amp;lt;= 0.0) &amp;amp;&amp;amp; (yr &amp;lt;= 0.0) );
- 	}
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;叉乘&lt;/p&gt;
 
+        &lt;p&gt;P × Q = x1&lt;em&gt;y2 - x2&lt;/em&gt;y1&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;点乘&lt;/p&gt;
+
+        &lt;p&gt;P·Q = x1&lt;em&gt;x2 + y1&lt;/em&gt;y2&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;快速排斥试验&lt;/p&gt;
+
+    &lt;p&gt;设以线段 P1P2 为对角线的矩形为R1， 设以线段 Q1Q2 为对角线的矩形为R2，如果R1和R2不相交，则两线段不会有交点；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;跨立试验&lt;/p&gt;
+
+    &lt;p&gt;如果两线段相交，则两线段必然相互跨立对方，所谓跨立，指的是一条线段的两端点分别位于另一线段所在直线的两边。判断是否跨立，还是要用到矢量叉积的几何意义。以图3为例，若P1P2跨立Q1Q2 ，则矢量&lt;/p&gt;
+
+    &lt;p&gt;( P1 - Q1 ) 和( P2 - Q1 )位于矢量( Q2 - Q1 )&lt;/p&gt;
+
+    &lt;p&gt;的两侧，即：&lt;/p&gt;
+
+    &lt;p&gt;( P1 - Q1 ) × ( Q2 - Q1 ) * ( P2 - Q1 ) × ( Q2 - Q1 ) &amp;lt; 0&lt;/p&gt;
+
+    &lt;p&gt;上式可改写成：&lt;/p&gt;
+
+    &lt;p&gt;( P1 - Q1 ) × ( Q2 - Q1 ) * ( Q2 - Q1 ) × ( P2 - Q1 ) &amp;gt; 0&lt;/p&gt;
+
+    &lt;p&gt;当&lt;/p&gt;
+
+    &lt;p&gt;( P1 - Q1 ) × ( Q2 - Q1 ) = 0&lt;/p&gt;
+
+    &lt;p&gt;时，说明线段P1P2和Q1Q2共线（但是不一定有交点）。同理判断Q1Q2跨立P1P2的依据是：&lt;/p&gt;
+
+    &lt;p&gt;( Q1 - P1 ) × ( P2 - P1 ) * ( Q2 - P1 ) × ( P2 - P1 ) &amp;lt; 0&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;判断点是否在多边形内&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt;bool IsPointInPolygon(const Polygon&amp;amp; py, const Point&amp;amp; pt)
+ {
+     assert(py.IsValid()); /*只考虑正常的多边形，边数&amp;gt;=3*/
+	 
+     int count = 0;
+     LineSeg ll = LineSeg(pt, Point(-INFINITE, pt.y)); /*射线L*/
+     for(int i = 0; i &amp;lt; py.GetPolyCount(); i++)
+     {
+         /*当前点和下一个点组成线段P1P2*/
+         LineSeg pp = LineSeg(py.pts[i], py.pts[(i + 1) % py.GetPolyCount()]);
+         if(IsPointOnLineSegment(pp, pt))
+         {
+             return true;
+         }
+	 
+         if(!pp.IsHorizontal())
+         {
+             if((IsSameFloatValue(pp.ps.y, pt.y)) &amp;amp;&amp;amp; (pp.ps.y &amp;gt; pp.pe.y))
+             {
+                 count++;
+             }
+             else if((IsSameFloatValue(pp.pe.y, pt.y)) &amp;amp;&amp;amp; (pp.pe.y &amp;gt; pp.ps.y))
+             {
+                 count++;
+             }
+             else
+             {
+                 if(IsLineSegmentIntersect(pp, ll))
+                 {
+                     count++;
+                 }
+             }
+         }
+     }
+	 
+     return ((count % 2) == 1);
+ }
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;求多边形外包矩形&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt; void GetPolygonEnvelopRect(const Polygon&amp;amp; py, Rect&amp;amp; rc)
+ {
+     assert(py.IsValid()); /*只考虑正常的多边形，边数&amp;gt;=3*/
+	 
+     double minx = py.pts[0].x;
+     double maxx = py.pts[0].x;
+     double miny = py.pts[0].y;
+     double maxy = py.pts[0].y;
+     for(int i = 1; i &amp;lt; py.GetPolyCount(); i++)
+     {
+         if(py.pts[i].x &amp;lt; minx)
+             minx = py.pts[i].x;
+         if(py.pts[i].x &amp;gt; maxx)
+             maxx = py.pts[i].x;
+         if(py.pts[i].y &amp;lt; miny)
+             miny = py.pts[i].y;
+         if(py.pts[i].y &amp;gt; maxy)
+             maxy = py.pts[i].y;
+     }
+	 
+     rc = Rect(minx, miny, maxx, maxy);
+ }
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Sat, 08 Aug 2015 00:00:00 +0800</pubDate>
         <link>/2015/08/08/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E7%AE%97%E6%B3%95/</link>
         <guid isPermaLink="true">/2015/08/08/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E7%AE%97%E6%B3%95/</guid>
         
         
-        <category>code</category>
+        <category>算法</category>
+        
+      </item>
+    
+      <item>
+        <title>Unity执行任意菜单</title>
+        <description>&lt;pre&gt;&lt;code&gt;EditorApplication.ExecuteMenuItem
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Mon, 03 Aug 2015 00:00:00 +0800</pubDate>
+        <link>/2015/08/03/Unity%E6%89%A7%E8%A1%8C%E4%BB%BB%E6%84%8F%E8%8F%9C%E5%8D%95/</link>
+        <guid isPermaLink="true">/2015/08/03/Unity%E6%89%A7%E8%A1%8C%E4%BB%BB%E6%84%8F%E8%8F%9C%E5%8D%95/</guid>
+        
+        
+        <category>unity</category>
+        
+      </item>
+    
+      <item>
+        <title>CatmullRom插值算法</title>
+        <description>&lt;pre&gt;&lt;code&gt;Vector3f DDUtil::catmullRom(Vector3f P0, Vector3f P1, Vector3f P2, Vector3f P3, float t)  
+{  
+    float factor = 0.5;  
+    Vector3f c0 = P1;  
+    Vector3f c1 =  (P2 - P0) * factor;  
+    Vector3f c2 =  (P2 - P1) * 3.f  -   (P3 - P1) * factor -  (P2 - P0)* 2.f * factor ;  
+    Vector3f c3 =  (P2 - P1) * -2.f  +   (P3 - P1) * factor +  (P2 - P0) * factor;  
+  
+    Vector3f curvePoint = c3 * t * t * t + c2 * t * t + c1 * t + c0;  
+  
+    return curvePoint;  
+}  
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 01 Aug 2015 00:00:00 +0800</pubDate>
+        <link>/2015/08/01/cr/</link>
+        <guid isPermaLink="true">/2015/08/01/cr/</guid>
+        
+        
+        <category>算法</category>
+        
+      </item>
+    
+      <item>
+        <title>Android禁止输入全屏</title>
+        <description>&lt;pre&gt;&lt;code&gt;View.setImeOptions(EditorInfo.IME_FLAG_NO_FULLSCREEN|EditorInfo.IME_ACTION_DONE);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Thu, 02 Jul 2015 00:00:00 +0800</pubDate>
+        <link>/2015/07/02/%E5%AE%89%E5%8D%93%E7%A6%81%E6%AD%A2%E8%BE%93%E5%85%A5%E6%B3%95%E5%85%A8%E5%B1%8F/</link>
+        <guid isPermaLink="true">/2015/07/02/%E5%AE%89%E5%8D%93%E7%A6%81%E6%AD%A2%E8%BE%93%E5%85%A5%E6%B3%95%E5%85%A8%E5%B1%8F/</guid>
+        
+        
+        <category>android</category>
+        
+      </item>
+    
+      <item>
+        <title>Android移动View</title>
+        <description>&lt;pre&gt;&lt;code&gt;View CreateLayout(Context c,View cv)
+{
+	RelativeLayout relativeLayout = new RelativeLayout(c);
+	ViewGroup.LayoutParams lp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+	relativeLayout.setLayoutParams(lp);
+	relativeLayout.addView(cv);
+	//ChangeHeight(cv,360);
+	return relativeLayout;
+}
+
+void ChangeHeight(View cv,int offset)
+{
+	RelativeLayout.LayoutParams rp =(RelativeLayout.LayoutParams)cv.getLayoutParams();
+	rp.bottomMargin = offset;
+	rp.topMargin = -offset;
+	cv.setLayoutParams(rp);
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Thu, 02 Jul 2015 00:00:00 +0800</pubDate>
+        <link>/2015/07/02/AndroidView/</link>
+        <guid isPermaLink="true">/2015/07/02/AndroidView/</guid>
+        
+        
+        <category>android</category>
         
       </item>
     
@@ -107,78 +302,6 @@
         <pubDate>Wed, 27 Aug 2014 00:00:00 +0800</pubDate>
         <link>/2014/08/27/Rule/</link>
         <guid isPermaLink="true">/2014/08/27/Rule/</guid>
-        
-        
-        <category>other</category>
-        
-      </item>
-    
-      <item>
-        <title>About Liquid</title>
-        <description>&lt;h1 id=&quot;httpsgithubcomshopifyliquidwikiliquid-for-designers&quot;&gt;&lt;a href=&quot;https://github.com/Shopify/liquid/wiki/Liquid-for-Designers&quot;&gt;语法&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;#&lt;a href=&quot;http://blog.csdn.net/dont27/article/details/38097581&quot;&gt;语法&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 27 Aug 2014 00:00:00 +0800</pubDate>
-        <link>/2014/08/27/Liquid/</link>
-        <guid isPermaLink="true">/2014/08/27/Liquid/</guid>
-        
-        
-        <category>other</category>
-        
-      </item>
-    
-      <item>
-        <title>寻路</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/huang9012/article/details/26391211&quot;&gt;AStar&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.luzexi.com/unity3d%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1navmesh%E5%AF%BB%E8%B7%AF/&quot;&gt;NavMesh&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5728.html&quot;&gt;1&lt;/a&gt;
-&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5729.html&quot;&gt;2&lt;/a&gt;
-&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5730.html&quot;&gt;3&lt;/a&gt;
-&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5731.html&quot;&gt;4&lt;/a&gt;
-&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5732.html&quot;&gt;5&lt;/a&gt;
-&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5733.html&quot;&gt;6&lt;/a&gt;
-&lt;a href=&quot;http://www.5uflash.com/flashjiaocheng/Flashyingyongkaifa/5734.html&quot;&gt;7&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 25 Aug 2014 00:00:00 +0800</pubDate>
-        <link>/2014/08/25/AStarCsharp/</link>
-        <guid isPermaLink="true">/2014/08/25/AStarCsharp/</guid>
-        
-        
-        <category>code</category>
-        
-      </item>
-    
-      <item>
-        <title>万向锁</title>
-        <description>&lt;p&gt;万向节死锁有时又被简称为万向节锁或者万向锁，是指当三个万向节其中两个的轴发生重合时，会失去一个自由度的情形。&lt;/p&gt;
-&lt;embed src=&quot;http://player.youku.com/player.php/sid/XNzkyOTIyMTI=/v.swf&quot; quality=&quot;high&quot; width=&quot;480&quot; height=&quot;400&quot; align=&quot;center&quot; allowscriptaccess=&quot;sameDomain&quot; type=&quot;application/x-shockwave-flash&quot; /&gt;
-&lt;p&gt;&amp;lt;/embed&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E8%90%AC%E5%90%91%E9%8E%96&quot;&gt;Wiki&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 24 Aug 2014 00:00:00 +0800</pubDate>
-        <link>/2014/08/24/wanxiangsuo/</link>
-        <guid isPermaLink="true">/2014/08/24/wanxiangsuo/</guid>
-        
-        
-        <category>other</category>
-        
-      </item>
-    
-      <item>
-        <title>Git记住密码</title>
-        <description>&lt;!--more--&gt;
-&lt;p&gt;&lt;code&gt;
-[credential]    
-    helper = store
-&lt;/code&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 23 Aug 2014 00:00:00 +0800</pubDate>
-        <link>/2014/08/23/gitjizhumima/</link>
-        <guid isPermaLink="true">/2014/08/23/gitjizhumima/</guid>
         
         
         <category>other</category>
